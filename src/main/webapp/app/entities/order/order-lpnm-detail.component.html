@@ -1,0 +1,57 @@
+
+<div *ngIf="order">
+    <h2><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.detail.title">Order</span> {{order.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{order.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.shippedDate">Shipped Date</span></dt>
+        <dd>
+            <span>{{order.shippedDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'lesnouveauxpetitsmondesStoreApp.OrderStatus.' + order.status}}">{{order.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.cart">Cart</span></dt>
+        <dd>
+            <div *ngIf="order.cartId">
+                <a [routerLink]="['/cart-lpnm', order.cartId]">{{order.cartId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.shippingAddress">Shipping Address</span></dt>
+        <dd>
+            <div *ngIf="order.shippingAddressId">
+                <a [routerLink]="['/address-lpnm', order.shippingAddressId]">{{order.shippingAddressId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.billingAddress">Billing Address</span></dt>
+        <dd>
+            <div *ngIf="order.billingAddressId">
+                <a [routerLink]="['/address-lpnm', order.billingAddressId]">{{order.billingAddressId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.userei">Userei</span></dt>
+        <dd>
+            <div *ngIf="order.usereiId">
+                <a [routerLink]="['/user-extra-info', order.usereiId]">{{order.usereiId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'order-lpnm/'+ order.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,41 @@
+
+<div *ngIf="address">
+    <h2><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.address.detail.title">Address</span> {{address.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.address.no">No</span></dt>
+        <dd>
+            <span>{{address.no}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.address.street">Street</span></dt>
+        <dd>
+            <span>{{address.street}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.address.city">City</span></dt>
+        <dd>
+            <span>{{address.city}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.address.zipcode">Zipcode</span></dt>
+        <dd>
+            <span>{{address.zipcode}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.address.country">Country</span></dt>
+        <dd>
+            <span>{{address.country}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'address-lpnm/'+ address.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

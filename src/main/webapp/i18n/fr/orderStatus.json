@@ -1,0 +1,12 @@
+{
+    "lesnouveauxpetitsmondesStoreApp": {
+        "OrderStatus" : {
+            "null": "",
+            "NEW": "NEW",
+            "PAID": "PAID",
+            "SHIPPED": "SHIPPED",
+            "DELIVERED": "DELIVERED",
+            "CLOSED": "CLOSED"
+        }
+    }
+}

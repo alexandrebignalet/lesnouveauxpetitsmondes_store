@@ -1,0 +1,37 @@
+
+<div *ngIf="userExtraInfo">
+    <h2><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.userExtraInfo.detail.title">User Extra Info</span> {{userExtraInfo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.userExtraInfo.shippingAddress">Shipping Address</span></dt>
+        <dd>
+            <div *ngIf="userExtraInfo.shippingAddressId">
+                <a [routerLink]="['/address-lpnm', userExtraInfo.shippingAddressId]">{{userExtraInfo.shippingAddressStreet}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.userExtraInfo.billingAddress">Billing Address</span></dt>
+        <dd>
+            <div *ngIf="userExtraInfo.billingAddressId">
+                <a [routerLink]="['/address-lpnm', userExtraInfo.billingAddressId]">{{userExtraInfo.billingAddressStreet}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.userExtraInfo.user">User</span></dt>
+        <dd>
+            {{userExtraInfo.userLogin}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-extra-info/'+ userExtraInfo.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

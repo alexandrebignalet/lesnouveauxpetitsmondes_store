@@ -1,0 +1,24 @@
+{
+    "lesnouveauxpetitsmondesStoreApp": {
+        "userExtraInfo" : {
+            "home": {
+                "title": "User Extra Infos",
+                "createLabel": "Crear nuevo User Extra Info",
+                "createOrEditLabel": "Crear o editar User Extra Info",
+                "search": "Search for User Extra Info"
+            },
+            "created": "Un nuevo User Extra Info ha sido creado con el identificador {{ param }}",
+            "updated": "Un User Extra Info ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User Extra Info ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User Extra Info {{ id }}?"
+            },
+            "detail": {
+                "title": "User Extra Info"
+            },
+            "shippingAddress": "Shipping Address",
+            "billingAddress": "Billing Address",
+            "user": "User"
+        }
+    }
+}

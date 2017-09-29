@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "items",
+            "otherEntityName": "cartItem",
+            "otherEntityRelationshipName": "cart"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170806100635",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "cart",
+    "pagination": "no",
+    "angularJSSuffix": "lpnm"
+}

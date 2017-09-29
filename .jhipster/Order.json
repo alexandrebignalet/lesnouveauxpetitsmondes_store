@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "cart",
+            "otherEntityName": "cart",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "order",
+            "relationshipValidateRules": "required"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "shippingAddress",
+            "otherEntityName": "address",
+            "relationshipValidateRules": "required",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "billingAddress",
+            "otherEntityName": "address",
+            "relationshipValidateRules": "required",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "userei",
+            "otherEntityName": "userExtraInfo",
+            "relationshipValidateRules": "required",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "creationDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "shippedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "OrderStatus",
+            "fieldValues": "NEW,PAID,SHIPPED,DELIVERED,CLOSED"
+        }
+    ],
+    "changelogDate": "20170806100636",
+    "entityTableName": "jhi_order",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "angularJSSuffix": "lpnm"
+}

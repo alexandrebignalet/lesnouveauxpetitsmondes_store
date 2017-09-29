@@ -1,0 +1,97 @@
+<div>
+    <h2>
+        <span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.home.title">Orders</span>
+        <button class="btn btn-primary float-right jh-create-entity create-order-lpnm" [routerLink]="['/', { outlets: { popup: ['order-lpnm-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.home.createLabel">
+            Create new Order
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'lesnouveauxpetitsmondesStoreApp.order.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="orders">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="creationDate"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.creationDate">Creation Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippedDate"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.shippedDate">Shipped Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cartId"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.cart">Cart</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shippingAddressId"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.shippingAddress">Shipping Address</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="billingAddressId"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.billingAddress">Billing Address</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="usereiId"><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.order.userei">Userei</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let order of orders ;trackBy: trackId">
+                <td><a [routerLink]="['../order-lpnm', order.id ]">{{order.id}}</a></td>
+                <td>{{order.creationDate | date:'mediumDate'}}</td>
+                <td>{{order.shippedDate | date:'mediumDate'}}</td>
+                <td jhiTranslate="{{'lesnouveauxpetitsmondesStoreApp.OrderStatus.' + order.status}}">{{order.status}}</td>
+                <td>
+                    <div *ngIf="order.cartId">
+                        <a [routerLink]="['../cart-lpnm', order.cartId  ]" >{{order.cartId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="order.shippingAddressId">
+                        <a [routerLink]="['../address-lpnm', order.shippingAddressId  ]" >{{order.shippingAddressId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="order.billingAddressId">
+                        <a [routerLink]="['../address-lpnm', order.billingAddressId  ]" >{{order.billingAddressId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="order.usereiId">
+                        <a [routerLink]="['../user-extra-info', order.usereiId  ]" >{{order.usereiId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../order-lpnm', order.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'order-lpnm/'+ order.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'order-lpnm/'+ order.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

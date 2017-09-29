@@ -1,0 +1,45 @@
+
+<div *ngIf="product">
+    <h2><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.product.detail.title">Product</span> {{product.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.product.name">Name</span></dt>
+        <dd>
+            <span>{{product.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.product.description">Description</span></dt>
+        <dd>
+            <span>{{product.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.product.price">Price</span></dt>
+        <dd>
+            <span>{{product.price}}</span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.product.categories">Categories</span></dt>
+        <dd>
+            <span *ngFor="let categories of product.categories; let last = last">
+                <a [routerLink]="['/category-lpnm', categories?.id ]">{{categories.name}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="lesnouveauxpetitsmondesStoreApp.product.tags">Tags</span></dt>
+        <dd>
+            <span *ngFor="let tags of product.tags; let last = last">
+                <a [routerLink]="['/tag-lpnm', tags?.id ]">{{tags.name}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'product-lpnm/'+ product.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

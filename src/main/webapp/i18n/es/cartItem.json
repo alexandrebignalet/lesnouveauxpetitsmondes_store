@@ -1,0 +1,24 @@
+{
+    "lesnouveauxpetitsmondesStoreApp": {
+        "cartItem" : {
+            "home": {
+                "title": "Cart Items",
+                "createLabel": "Crear nuevo Cart Item",
+                "createOrEditLabel": "Crear o editar Cart Item",
+                "search": "Search for Cart Item"
+            },
+            "created": "Un nuevo Cart Item ha sido creado con el identificador {{ param }}",
+            "updated": "Un Cart Item ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Cart Item ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Cart Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Cart Item"
+            },
+            "quantity": "Quantity",
+            "product": "Product",
+            "cart": "Cart"
+        }
+    }
+}

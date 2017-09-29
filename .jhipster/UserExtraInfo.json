@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "shippingAddress",
+            "otherEntityName": "address",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "street"
+        },
+        {
+            "relationshipName": "billingAddress",
+            "otherEntityName": "address",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "street"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userExtraInfo"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20170828133008",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "user_extra_info",
+    "pagination": "pager"
+}
